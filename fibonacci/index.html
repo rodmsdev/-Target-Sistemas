@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar número dentro da sequência de Fibonacci</title>
+  </head>
+  <body>
+    <h1>Verificar número na sequência de Fibonacci</h1>
+    <form>
+      <label for="num">Digite um número inteiro positivo:</label>
+      <input type="number" id="num" name="num" required>
+      <button type="submit">Verificar</button>
+    </form>
+    <p id="result"></p>
+    <script>
+      const form = document.querySelector('form');
+      const result = document.querySelector('#result');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        let num = parseInt(document.querySelector('#num').value);
+        let fib = [0, 1];
+        while (fib[fib.length - 1] < num) {
+          fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+        }
+        if (fib.includes(num)) {
+          result.textContent = `O número ${num} pertence à sequência de Fibonacci.`;
+        } else {
+          result.textContent = `O número ${num} não pertence à sequência de Fibonacci.`;
+        }
+      });
+    </script>
+  </body>
+</html>
